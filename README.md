@@ -3,7 +3,7 @@
 
 [![Repository Status](https://img.shields.io/badge/Repository%20Status-Maintained-dark%20green.svg)](https://github.com/EaruvaTeja/EaruvaTeja)
 [![Website Status](https://img.shields.io/badge/Website%20Status-Online-green)](https://earuvateja.github.io/)
-[![Author](https://img.shields.io/badge/Author-Teja%20Jangid-purple.svg)](https://www.instagram.com/_mr_heist_x/?hl=en%2F)
+[![Author](https://img.shields.io/badge/Author-Earuva%20Teja-purple.svg)](https://www.instagram.com/_mr_heist_x/?hl=en%2F)
 [![Latest Release](https://img.shields.io/badge/Latest%20Release-11%20Jan%202024-yellow.svg)](https://github.com/EaruvaTeja)
 
 
