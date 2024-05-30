@@ -7,7 +7,7 @@
 [![Latest Release](https://img.shields.io/badge/Latest%20Release-30%20may%202024-yellow.svg)](https://github.com/EaruvaTeja)
 
 
-<img width="100%" alt="Portfolio Screenshot" src="https://github.com/vinodjangid07/vinodjangid07.github.io/assets/86096184/fd0d70b2-1505-4adf-8b0c-427df58607e3">
+<img width="100%" alt="Portfolio Screenshot" src="website.png">
 
 
 :star: Star me on GitHub — it helps!
