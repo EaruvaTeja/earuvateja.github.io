@@ -773,41 +773,65 @@ What are you doing here?! you sneaky developer...
 <!-- Buy Me a Coffee Widget -->
 <!-- Buy Me a Coffee Widget -->
 <!-- Buy Me a Coffee Widget -->
-<script data-name="BMC-Widget" data-cfasync="false"
+<script 
+  data-name="BMC-Widget" 
+  data-cfasync="false"
   src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="earuvateja"
   data-description="Support me!"
-  data-message="Thanks you for visiting!"
-  data-color="#49e8e0"
+  data-message="Thank you for visiting!"
+  data-color="#16b5ad"
   data-position="Left"
   data-x_margin="20"
   data-y_margin="20">
 </script>
 
 <style>
-  /* Ensure widget icon is smaller and positioned bottom-left */
+  /* Align the widget icon bottom-left */
   .bmc-btn-container {
-    transform: scale(0.8); /* Shrinks the icon slightly */
+    position: fixed !important;
     bottom: 20px !important;
     left: 20px !important;
     right: auto !important;
+    transform: scale(0.75); /* Shrink size slightly */
+    transform-origin: bottom left;
+    z-index: 999999 !important;
   }
 
-  /* Resize the popup interface */
+  /* Style and align the popup interface */
   iframe[src*="buymeacoffee.com/widget"] {
-    max-width: 450px !important; /* Increased width by ~50% */
-    max-height: 400px !important; /* Keep height unchanged */
-    bottom: 20px !important;
+    position: fixed !important;
+    bottom: 70px !important; /* keep some space above the button */
     left: 20px !important;
     right: auto !important;
     border-radius: 12px !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    max-width: 400px !important;
+    max-height: 450px !important;
+    width: 100% !important;
+  }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 600px) {
+    .bmc-btn-container {
+      transform: scale(0.65); /* smaller on mobile */
+      bottom: 15px !important;
+      left: 15px !important;
+    }
+
+    iframe[src*="buymeacoffee.com/widget"] {
+      max-width: 90% !important;
+      left: 5% !important;
+      bottom: 70px !important;
+    }
   }
 </style>
 
 
+
 </body>
 </html>
+
 
 
 
