@@ -772,27 +772,41 @@ What are you doing here?! you sneaky developer...
 
 <!-- Buy Me a Coffee Widget -->
 <!-- Buy Me a Coffee Widget -->
+<!-- Buy Me a Coffee Widget -->
 <script data-name="BMC-Widget" data-cfasync="false"
   src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="earuvateja"
-  data-description="Support me on Buy Me a Coffee!"
-  data-message="Thanks you for Visiting!"
-  data-color="#1be2d8"
+  data-description="Support me!"
+  data-message="Thanks you for visiting!"
+  data-color="#49e8e0"
   data-position="Bottom-Left"
-  data-x_margin="18"
-  data-y_margin="18">
+  data-x_margin="20"
+  data-y_margin="20">
 </script>
 
 <style>
-  /* Resize the popup interface */
-  iframe[src*="buymeacoffee.com/widget"] {
-    max-width: 300px !important;
-    max-height: 400px !important;
+  /* Ensure widget icon is smaller and positioned bottom-left */
+  .bmc-btn-container {
+    transform: scale(0.8); /* Shrinks the icon slightly */
     bottom: 20px !important;
     left: 20px !important;
+    right: auto !important;
+  }
+
+  /* Resize the popup interface */
+  iframe[src*="buymeacoffee.com/widget"] {
+    max-width: 450px !important; /* Increased width by ~50% */
+    max-height: 400px !important; /* Keep height unchanged */
+    bottom: 20px !important;
+    left: 20px !important;
+    right: auto !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 </style>
 
+
 </body>
 </html>
+
 
