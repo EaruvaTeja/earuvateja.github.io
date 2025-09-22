@@ -781,107 +781,86 @@ What are you doing here?! you sneaky developer...
   data-description="Support me!"
   data-message="Thank you for visiting!"
   data-color="#16b5ad"
-  data-position="Left"
+  data-position="Right"            <!-- changed to Right so widget defaults to right popup -->
   data-x_margin="20"
   data-y_margin="20">
 </script>
 
 <style>
-  /* === Only widget-related styles; other styles left intact === */
+  /**
+   * Widget placement:
+   * - Keep anchor on the right (so popup opens on right by default)
+   * - Shift the visible icon to the left by ~2in so it sits "a few inches" left from the right edge
+   * - On small screens remove the shift so it remains reachable and responsive
+   */
+
   .bmc-btn-container {
-    /* position/scale set here, but the final position is enforced by the script below */
     position: fixed !important;
-    transform: scale(0.60) !important;
-    transform-origin: left bottom !important;
+    right: 20px !important;                   /* pillar from the right edge */
+    bottom: 20px !important;
     z-index: 2147483647 !important;
     pointer-events: auto !important;
+
+    /* visually move it left by ~2 inches while staying anchored to the right */
+    /* combined transform keeps scale + the left shift in one line */
+    transform-origin: right bottom !important;
+    transform: translateX(-2in) scale(0.75) !important;
+    will-change: transform;
   }
 
-  /* Popup iframe styling (kept as-is from your last version) */
+  /* Tweak inner button minimal size + shape (keeps it less dominant) */
+  .bmc-btn-container .bmc-btn,
+  .bmc-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12) !important;
+  }
+
+  /* Popup (iframe) — force it to the right side (left:auto) and responsive */
   iframe[src*="buymeacoffee.com/widget"] {
     position: fixed !important;
-    bottom: 70px !important;
-    left: 20px !important;
-    right: auto !important;
+    right: 20px !important;        /* popup on right side */
+    left: auto !important;
+    bottom: calc(20px + 56px) !important; /* leave space above the button */
+    width: min(420px, calc(100% - 40px)) !important;
+    max-width: 420px !important;
+    max-height: 80vh !important;
+    height: auto !important;
     border-radius: 12px !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    max-width: 400px !important;
-    max-height: 450px !important;
-    width: 100% !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.20) !important;
+    overflow: hidden !important;
+    z-index: 2147483646 !important;
   }
 
+  /* Mobile: remove the big left-shift and make both icon + popup usable */
   @media (max-width: 600px) {
     .bmc-btn-container {
-      transform: scale(0.65) !important;
+      transform: translateX(0) scale(0.65) !important; /* no horizontal shift on small screens */
+      right: 15px !important;
       bottom: 15px !important;
-      left: 15px !important;
     }
 
     iframe[src*="buymeacoffee.com/widget"] {
-      max-width: 90% !important;
-      left: 5% !important;
-      bottom: 70px !important;
+      right: 10px !important;
+      left: auto !important;
+      width: calc(100% - 40px) !important;
+      max-width: calc(100% - 40px) !important;
+      bottom: calc(15px + 56px) !important;
+      max-height: 85vh !important;
+      border-radius: 10px !important;
     }
   }
 </style>
 
-<!-- Script to strongly enforce bottom-left placement (robust to widget re-inserts) -->
-<script>
-(function enforceBmcLeft(){
-  const APPLY_LEFT = () => {
-    const el = document.querySelector('.bmc-btn-container');
-    if (!el) return false;
 
-    // Force inline styles so widget script can't permanently push it to the right.
-    el.style.position = 'fixed';
-    el.style.left = '20px';
-    el.style.right = 'auto';
-    el.style.bottom = '20px';
-    el.style.top = 'auto';
-    el.style.inset = 'auto auto 20px 20px';
-    el.style.transformOrigin = 'left bottom';
-    el.style.transform = 'scale(0.60)';
-    el.style.zIndex = '2147483647';
-
-    // If there's an inner element that the widget attaches the inline style to, clear it too.
-    // (Some widget versions put the inline style on a child node.)
-    if (el.firstElementChild) {
-      el.firstElementChild.style.right = 'auto';
-      el.firstElementChild.style.left = '0';
-    }
-    return true;
-  };
-
-  // Try immediately in case widget is already loaded
-  if (APPLY_LEFT()) return;
-
-  // Observe DOM for the widget insertion and apply as soon as it appears.
-  const observer = new MutationObserver((mutations, obs) => {
-    if (APPLY_LEFT()) {
-      obs.disconnect();
-    }
-  });
-
-  observer.observe(document.documentElement || document.body, {
-    childList: true,
-    subtree: true
-  });
-
-  // Fallback: try a short interval for a few seconds in case widget initializes slowly
-  let tries = 0;
-  const interval = setInterval(() => {
-    if (APPLY_LEFT() || ++tries > 30) {
-      clearInterval(interval);
-    }
-  }, 200);
-})();
-</script>
 
 
 
 
 </body>
 </html>
+
 
 
 
