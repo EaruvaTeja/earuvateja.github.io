@@ -58,6 +58,81 @@ What are you doing here?! you sneaky developer...
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps" />
+  
+  <!-- Buy Me a Coffee Widget CSS -->
+  <style>
+    /* Custom styles for the Buy Me a Coffee widget */
+    .bmc-button-container {
+        left: 20px !important; /* Move widget slightly left */
+        right: auto !important;
+    }
+    
+    .bmc-button {
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50% !important; /* Make it circular */
+        transition: all 0.3s ease !important;
+    }
+    
+    .bmc-button:hover {
+        transform: scale(1.1) !important;
+    }
+    
+    .bmc-button img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    /* Make popup responsive */
+    @media (max-width: 768px) {
+        .bmc-button-container {
+            left: 15px !important;
+            bottom: 15px !important;
+        }
+        
+        .bmc-button {
+            width: 45px !important;
+            height: 45px !important;
+        }
+        
+        .bmc-button img {
+            width: 25px !important;
+            height: 25px !important;
+        }
+        
+        .bmc-popup-container {
+            width: 90% !important;
+            max-width: 400px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            border-radius: 15px !important; /* Rounded corners */
+        }
+        
+        .bmc-popup-content {
+            border-radius: 15px !important;
+            padding: 15px !important;
+        }
+        
+        .bmc-popup-close {
+            top: 10px !important;
+            right: 10px !important;
+        }
+    }
+    
+    /* Additional styling for better appearance */
+    .bmc-popup-container {
+        border-radius: 10px !important; /* Slightly rounded corners */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    }
+    
+    .bmc-popup-content {
+        border-radius: 10px !important;
+    }
+    
+    .bmc-btn {
+        border-radius: 5px !important; /* Rounded button corners */
+    }
+  </style>
 </head>
 
 <body class="body">
@@ -243,15 +318,15 @@ What are you doing here?! you sneaky developer...
         <div class="info-dp-section">
           <div class="about-info">
             <p tabindex="0">
-              I’m Earuva Teja, a B.Tech Computer Science Engineering graduate (May 2025) from Kakatiya University College of Engineering and Technology (KUCET), with a strong foundation in programming, data handling, and analytical problem-solving.
+              I'm Earuva Teja, a B.Tech Computer Science Engineering graduate (May 2025) from Kakatiya University College of Engineering and Technology (KUCET), with a strong foundation in programming, data handling, and analytical problem-solving.
 
-              My core expertise lies in Python, SQL, TensorFlow, and statistical modeling—skills I’ve applied through hands-on projects in regression analysis, predictive modeling, and large-scale data processing. Through the IBM Data Science Professional Certificate (via Simplilearn), I’ve built end-to-end ML solutions that extract actionable insights from real-world datasets.
+              My core expertise lies in Python, SQL, TensorFlow, and statistical modeling—skills I've applied through hands-on projects in regression analysis, predictive modeling, and large-scale data processing. Through the IBM Data Science Professional Certificate (via Simplilearn), I've built end-to-end ML solutions that extract actionable insights from real-world datasets.
 
-              Alongside my academic journey, I’ve developed practical knowledge in C, Java, databases, and computer networks, enabling me to understand both system-level and data-level challenges. I’m actively upskilling in generative AI and advanced analytics via Coursera and Simplilearn to stay ahead in this fast-evolving field.
+              Alongside my academic journey, I've developed practical knowledge in C, Java, databases, and computer networks, enabling me to understand both system-level and data-level challenges. I'm actively upskilling in generative AI and advanced analytics via Coursera and Simplilearn to stay ahead in this fast-evolving field.
 
               With a mindset grounded in both data science and data analysis, I thrive on uncovering insights that drive smart decision-making. From optimizing processes to creating data dashboards or building models, I aim to deliver measurable business value through data.
 
-              I’m now eager to join forward-thinking teams as a Data Scientist or Data Analyst, where I can contribute meaningfully, grow continuously, and help solve impactful real-world problems through data.
+              I'm now eager to join forward-thinking teams as a Data Scientist or Data Analyst, where I can contribute meaningfully, grow continuously, and help solve impactful real-world problems through data.
             </p>
             <br />
             <p tabindex="0">
@@ -391,8 +466,7 @@ What are you doing here?! you sneaky developer...
     </section>
 
     <!-- Projects Section -->
-
-     <section class="projects-section-container" id="projects">
+    <section class="projects-section-container" id="projects">
       <div class="projects-section-div">
         <div class="section-heading" data-aos="fade-up">
           <h2 class="section-heading-article" tabindex="0" aria-label="My projects starts from here">
@@ -493,7 +567,7 @@ What are you doing here?! you sneaky developer...
                 <img src="https://th.bing.com/th/id/OIP.VBm_65mDJOriXchW68vyAAHaEO?rs=1&pid=ImgDetMain" alt="Tableau visualization" class="faviconforProject" />
                 <article class="ProjectHeading">Data Visualization - Tableau</article>
                 <p class="ProjectDescription">
-                  • <strong>Tesla Stock Price Analysis:</strong> Designed a Tableau dashboard to track Tesla’s daily stock prices, trends, and moving averages<br> 
+                  • <strong>Tesla Stock Price Analysis:</strong> Designed a Tableau dashboard to track Tesla's daily stock prices, trends, and moving averages<br> 
                   • <strong>UT Mart Sales Analytics:</strong> Created interactive visualizations to analyze top-selling products.<br>
                   • <strong>Amazon Shipping Analytics:</strong> Developed Tableau charts to assess on-time delivery rates and regional transit performance.<br> 
                 </p>
@@ -513,6 +587,10 @@ What are you doing here?! you sneaky developer...
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  </main>
           <!-- ---------------------- -->
   <!--        <div data-aos="fade-up" class="project-box-wrapper">
             <div class="project-box project-box2" id="project-box2">
@@ -574,10 +652,10 @@ What are you doing here?! you sneaky developer...
       -->
           <!-- --------------------- -->
       
-        </div>
-      </div>
-    </section>
-  </main>
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
+<!--   </main> -->
 
   
      <!--
@@ -771,159 +849,19 @@ What are you doing here?! you sneaky developer...
 </script>
 
 <!-- Buy Me a Coffee Widget -->
-<!-- Buy Me a Coffee Widget -->
-<!-- Buy Me a Coffee Widget -->
-<!-- Buy Me a Coffee Widget -->
-<!-- Buy Me a Coffee Widget Integration -->
-<style>
-  /* Custom styling for the Buy Me a Coffee widget */
-  #bmc-wbtn {
-    left: 40px !important; /* Move widget more to the left */
-    transform: scale(0.8) !important; /* Reduce overall size */
-    z-index: 1000; /* Ensure it stays above other content */
-  }
-  
-  #bmc-wbtn .bmc-btn {
-    border-radius: 50% !important; /* Make it circular */
-    width: 60px !important;
-    height: 60px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    transition: all 0.3s ease !important;
-  }
-  
-  #bmc-wbtn .bmc-btn:hover {
-    transform: scale(1.05) !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
-  }
-  
-  #bmc-wbtn .bmc-btn img {
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 50% !important;
-  }
-  
-  /* Style the popup container */
-  .bmc-popup-container {
-    border-radius: 12px !important; /* Rounded corners for popup */
-    overflow: hidden !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    #bmc-wbtn {
-      left: 20px !important;
-      bottom: 20px !important;
-      transform: scale(0.75) !important;
-    }
-    
-    #bmc-wbtn .bmc-btn {
-      width: 55px !important;
-      height: 55px !important;
-    }
-    
-    #bmc-wbtn .bmc-btn img {
-      width: 28px !important;
-      height: 28px !important;
-    }
-    
-    .bmc-popup-container {
-      max-width: 95vw !important;
-      left: 2.5% !important;
-      right: 2.5% !important;
-      transform: translateX(0) !important;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    #bmc-wbtn {
-      left: 15px !important;
-      bottom: 15px !important;
-      transform: scale(0.7) !important;
-    }
-    
-    #bmc-wbtn .bmc-btn {
-      width: 50px !important;
-      height: 50px !important;
-    }
-    
-    #bmc-wbtn .bmc-btn img {
-      width: 25px !important;
-      height: 25px !important;
-    }
-  }
-</style>
-
-<!-- Buy Me a Coffee Widget Script -->
-<script>
-  // Wait for the page to load
-  document.addEventListener('DOMContentLoaded', function() {
-    // Create and inject the Buy Me a Coffee widget script
-    const bmcScript = document.createElement('script');
-    bmcScript.setAttribute('data-name', 'BMC-Widget');
-    bmcScript.setAttribute('data-cfasync', 'false');
-    bmcScript.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
-    bmcScript.setAttribute('data-id', 'earuvateja');
-    bmcScript.setAttribute('data-description', 'Support me on Buy me a coffee!');
-    bmcScript.setAttribute('data-message', 'Thank you for visiting!');
-    bmcScript.setAttribute('data-color', '#16b5ad');
-    bmcScript.setAttribute('data-position', 'Right'); // Keep as right but we'll adjust with CSS
-    bmcScript.setAttribute('data-x_margin', '18');
-    bmcScript.setAttribute('data-y_margin', '18');
-    
-    // Add the script to the document
-    document.head.appendChild(bmcScript);
-    
-    // Enhance the widget after it loads
-    setTimeout(enhanceBMCWidget, 1500);
-    
-    // Also enhance on window resize for responsiveness
-    window.addEventListener('resize', function() {
-      setTimeout(enhanceBMCWidget, 100);
-    });
-  });
-  
-  // Function to enhance the BMC widget
-  function enhanceBMCWidget() {
-    const bmcBtn = document.getElementById('bmc-wbtn');
-    if (bmcBtn) {
-      // Apply our custom styles
-      bmcBtn.style.left = '40px';
-      bmcBtn.style.right = 'auto';
-      
-      // Add smooth animation
-      bmcBtn.style.transition = 'all 0.3s ease';
-      
-      // Add hover effect
-      bmcBtn.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(0.85)';
-      });
-      
-      bmcBtn.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(0.8)';
-      });
-      
-      // Find and style the popup container
-      const popupContainers = document.querySelectorAll('[id*="bmc-popup-container"]');
-      popupContainers.forEach(container => {
-        container.style.borderRadius = '12px';
-        container.style.overflow = 'hidden';
-      });
-    }
-  }
+<script data-name="BMC-Widget" data-cfasync="false" 
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+  data-id="earuvateja" 
+  data-description="Support me on Buy me a coffee!" 
+  data-message="Thank you for visiting!" 
+  data-color="#16b5ad" 
+  data-position="Right" 
+  data-x_margin="18" 
+  data-y_margin="18">
 </script>
-
-
-
-
-
-
 
 </body>
 </html>
-
-
-
 
 
 
