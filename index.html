@@ -787,18 +787,26 @@ What are you doing here?! you sneaky developer...
 </script>
 
 <style>
-  /* Align the widget icon bottom-left */
+  /* === ONLY CHANGED: force the coffee icon to bottom-left === */
   .bmc-btn-container {
     position: fixed !important;
-    bottom: 20px !important;
-    left: 20px !important;
+    /* inset: top right bottom left  -> set bottom and left explicitly */
+    inset: auto auto 20px 20px !important;
+    /* ensure no conflicting right value remains effective */
     right: auto !important;
-    transform: scale(0.75); /* Shrink size slightly */
-    transform-origin: bottom left;
-    z-index: 999999 !important;
+    left: 20px !important;
+    bottom: 20px !important;
+
+    /* scale + origin (horizontal first, then vertical) */
+    transform: scale(0.60) !important;
+    transform-origin: left bottom !important;
+
+    /* keep it on top and tappable */
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
   }
 
-  /* Style and align the popup interface */
+  /* Style and align the popup interface (unchanged from your original) */
   iframe[src*="buymeacoffee.com/widget"] {
     position: fixed !important;
     bottom: 70px !important; /* keep some space above the button */
@@ -811,7 +819,7 @@ What are you doing here?! you sneaky developer...
     width: 100% !important;
   }
 
-  /* Responsive adjustments for mobile */
+  /* Responsive adjustments for mobile (unchanged) */
   @media (max-width: 600px) {
     .bmc-btn-container {
       transform: scale(0.65); /* smaller on mobile */
@@ -829,8 +837,10 @@ What are you doing here?! you sneaky developer...
 
 
 
+
 </body>
 </html>
+
 
 
 
