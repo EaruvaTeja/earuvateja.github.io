@@ -774,57 +774,144 @@ What are you doing here?! you sneaky developer...
 <!-- Buy Me a Coffee Widget -->
 <!-- Buy Me a Coffee Widget -->
 <!-- Buy Me a Coffee Widget -->
-<script data-name="BMC-Widget" data-cfasync="false"
-  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-  data-id="earuvateja"
-  data-description="Support me!"
-  data-message="Thanks you for visiting!"
-  data-color="#16b5ad"
-  data-position="Right"
-  data-x_margin="20"
-  data-y_margin="20">
-</script>
-
+<!-- Buy Me a Coffee Widget Integration -->
 <style>
-  /* Position the icon at bottom-left and shrink it */
-  .bmc-btn-container {
-    position: fixed !important;
-    bottom: 20px !important;
-    left: 20px !important;
-    right: auto !important;
-    transform: scale(0.45); /* Smaller icon */
-    z-index: 9999;
+  /* Custom styling for the Buy Me a Coffee widget */
+  #bmc-wbtn {
+    left: 40px !important; /* Move widget more to the left */
+    transform: scale(0.8) !important; /* Reduce overall size */
+    z-index: 1000; /* Ensure it stays above other content */
   }
-
-  /* Resize the popup interface */
-  iframe[src*="buymeacoffee.com/widget"] {
-    width: 450px !important;
-    max-width: 90vw !important; /* Responsive width */
-    max-height: 400px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    position: fixed !important;
-    bottom: 70px !important;
-    left: 20px !important;
-    right: auto !important;
-    z-index: 9998;
+  
+  #bmc-wbtn .bmc-btn {
+    border-radius: 50% !important; /* Make it circular */
+    width: 60px !important;
+    height: 60px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
   }
-
-  /* Mobile responsiveness */
-  @media screen and (max-width: 600px) {
-    iframe[src*="buymeacoffee.com/widget"] {
-      width: 90vw !important;
-      left: 10px !important;
-      bottom: 60px !important;
+  
+  #bmc-wbtn .bmc-btn:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  #bmc-wbtn .bmc-btn img {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+  }
+  
+  /* Style the popup container */
+  .bmc-popup-container {
+    border-radius: 12px !important; /* Rounded corners for popup */
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #bmc-wbtn {
+      left: 20px !important;
+      bottom: 20px !important;
+      transform: scale(0.75) !important;
     }
-
-    .bmc-btn-container {
-      left: 10px !important;
-      bottom: 10px !important;
-      transform: scale(0.65); /* Smaller icon for mobile */
+    
+    #bmc-wbtn .bmc-btn {
+      width: 55px !important;
+      height: 55px !important;
+    }
+    
+    #bmc-wbtn .bmc-btn img {
+      width: 28px !important;
+      height: 28px !important;
+    }
+    
+    .bmc-popup-container {
+      max-width: 95vw !important;
+      left: 2.5% !important;
+      right: 2.5% !important;
+      transform: translateX(0) !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #bmc-wbtn {
+      left: 15px !important;
+      bottom: 15px !important;
+      transform: scale(0.7) !important;
+    }
+    
+    #bmc-wbtn .bmc-btn {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    
+    #bmc-wbtn .bmc-btn img {
+      width: 25px !important;
+      height: 25px !important;
     }
   }
 </style>
+
+<!-- Buy Me a Coffee Widget Script -->
+<script>
+  // Wait for the page to load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Create and inject the Buy Me a Coffee widget script
+    const bmcScript = document.createElement('script');
+    bmcScript.setAttribute('data-name', 'BMC-Widget');
+    bmcScript.setAttribute('data-cfasync', 'false');
+    bmcScript.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
+    bmcScript.setAttribute('data-id', 'earuvateja');
+    bmcScript.setAttribute('data-description', 'Support me on Buy me a coffee!');
+    bmcScript.setAttribute('data-message', 'Thank you for visiting!');
+    bmcScript.setAttribute('data-color', '#16b5ad');
+    bmcScript.setAttribute('data-position', 'Right'); // Keep as right but we'll adjust with CSS
+    bmcScript.setAttribute('data-x_margin', '18');
+    bmcScript.setAttribute('data-y_margin', '18');
+    
+    // Add the script to the document
+    document.head.appendChild(bmcScript);
+    
+    // Enhance the widget after it loads
+    setTimeout(enhanceBMCWidget, 1500);
+    
+    // Also enhance on window resize for responsiveness
+    window.addEventListener('resize', function() {
+      setTimeout(enhanceBMCWidget, 100);
+    });
+  });
+  
+  // Function to enhance the BMC widget
+  function enhanceBMCWidget() {
+    const bmcBtn = document.getElementById('bmc-wbtn');
+    if (bmcBtn) {
+      // Apply our custom styles
+      bmcBtn.style.left = '40px';
+      bmcBtn.style.right = 'auto';
+      
+      // Add smooth animation
+      bmcBtn.style.transition = 'all 0.3s ease';
+      
+      // Add hover effect
+      bmcBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(0.85)';
+      });
+      
+      bmcBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(0.8)';
+      });
+      
+      // Find and style the popup container
+      const popupContainers = document.querySelectorAll('[id*="bmc-popup-container"]');
+      popupContainers.forEach(container => {
+        container.style.borderRadius = '12px';
+        container.style.overflow = 'hidden';
+      });
+    }
+  }
+</script>
 
 
 
@@ -834,6 +921,7 @@ What are you doing here?! you sneaky developer...
 
 </body>
 </html>
+
 
 
 
