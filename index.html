@@ -787,29 +787,20 @@ What are you doing here?! you sneaky developer...
 </script>
 
 <style>
-  /* === ONLY CHANGED: force the coffee icon to bottom-left === */
+  /* === Only widget-related styles; other styles left intact === */
   .bmc-btn-container {
+    /* position/scale set here, but the final position is enforced by the script below */
     position: fixed !important;
-    /* inset: top right bottom left  -> set bottom and left explicitly */
-    inset: auto auto 20px 20px !important;
-    /* ensure no conflicting right value remains effective */
-    right: auto !important;
-    left: 20px !important;
-    bottom: 20px !important;
-
-    /* scale + origin (horizontal first, then vertical) */
     transform: scale(0.60) !important;
     transform-origin: left bottom !important;
-
-    /* keep it on top and tappable */
     z-index: 2147483647 !important;
     pointer-events: auto !important;
   }
 
-  /* Style and align the popup interface (unchanged from your original) */
+  /* Popup iframe styling (kept as-is from your last version) */
   iframe[src*="buymeacoffee.com/widget"] {
     position: fixed !important;
-    bottom: 70px !important; /* keep some space above the button */
+    bottom: 70px !important;
     left: 20px !important;
     right: auto !important;
     border-radius: 12px !important;
@@ -819,10 +810,9 @@ What are you doing here?! you sneaky developer...
     width: 100% !important;
   }
 
-  /* Responsive adjustments for mobile (unchanged) */
   @media (max-width: 600px) {
     .bmc-btn-container {
-      transform: scale(0.65); /* smaller on mobile */
+      transform: scale(0.65) !important;
       bottom: 15px !important;
       left: 15px !important;
     }
@@ -835,11 +825,64 @@ What are you doing here?! you sneaky developer...
   }
 </style>
 
+<!-- Script to strongly enforce bottom-left placement (robust to widget re-inserts) -->
+<script>
+(function enforceBmcLeft(){
+  const APPLY_LEFT = () => {
+    const el = document.querySelector('.bmc-btn-container');
+    if (!el) return false;
+
+    // Force inline styles so widget script can't permanently push it to the right.
+    el.style.position = 'fixed';
+    el.style.left = '20px';
+    el.style.right = 'auto';
+    el.style.bottom = '20px';
+    el.style.top = 'auto';
+    el.style.inset = 'auto auto 20px 20px';
+    el.style.transformOrigin = 'left bottom';
+    el.style.transform = 'scale(0.60)';
+    el.style.zIndex = '2147483647';
+
+    // If there's an inner element that the widget attaches the inline style to, clear it too.
+    // (Some widget versions put the inline style on a child node.)
+    if (el.firstElementChild) {
+      el.firstElementChild.style.right = 'auto';
+      el.firstElementChild.style.left = '0';
+    }
+    return true;
+  };
+
+  // Try immediately in case widget is already loaded
+  if (APPLY_LEFT()) return;
+
+  // Observe DOM for the widget insertion and apply as soon as it appears.
+  const observer = new MutationObserver((mutations, obs) => {
+    if (APPLY_LEFT()) {
+      obs.disconnect();
+    }
+  });
+
+  observer.observe(document.documentElement || document.body, {
+    childList: true,
+    subtree: true
+  });
+
+  // Fallback: try a short interval for a few seconds in case widget initializes slowly
+  let tries = 0;
+  const interval = setInterval(() => {
+    if (APPLY_LEFT() || ++tries > 30) {
+      clearInterval(interval);
+    }
+  }, 200);
+})();
+</script>
+
 
 
 
 </body>
 </html>
+
 
 
 
